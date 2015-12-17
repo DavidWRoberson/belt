@@ -1,0 +1,71 @@
+<h1>Idea Liker</h1>
+<div>
+<h2>Register</h2>
+<% if flash[:errors] %>
+	<% flash[:errors].each do |error| %>
+		<p><%= error %></p>
+	<% end %>
+<% end %>
+<% if flash[:success] %>
+	<p><%= flash[:success] %></p>
+<% end %>
+<%= form_for @user do |f| %>
+
+<div>
+	<%= f.label :first_name %><br/>
+	<%= f.text_field :first_name %>
+</div>
+<br/>
+<div>
+	<%= f.label :last_name %><br/>
+	<%= f.text_field :last_name %>
+</div>
+<br/>
+<div>
+	<%= f.label :email %><br/>
+	<%= f.text_field :email %>
+</div>
+<br/>
+<div>
+	<%= f.label :alias %><br/>
+	<%= f.text_field :alias %>
+</div>
+<br/>
+<p>*Password should be at least 8 characters</p>
+<div>
+	<%= f.label :password %><br/>
+	<%= f.password_field :password %>
+</div>
+<br/>
+<div>
+	<%= f.label "Confirm Password" %><br/>
+	<%= f.password_field :password_confirmation %>
+</div>
+<br/>
+<div>
+    <%= f.submit "Register" %>
+ </div>
+
+<% end %>
+</div>
+
+<div>
+<h2>Log In</h2>
+<%= flash[:error] %>
+<%= form_for( :session, :url => sessions_create_path ) do |f| %>
+  <div>
+    <%= f.label :email %><br/>
+    <%= f.email_field :email %>
+  </div>
+  <br/>
+  <div>
+    <%= f.label :password %><br/>
+    <%= f.password_field :password, autocomplete: "off" %>
+  </div>
+  <br/>
+  <div>
+    <%= f.submit "Log in" %>
+  </div>
+<% end %>
+
+</div>

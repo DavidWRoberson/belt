@@ -1,0 +1,21 @@
+<a href="/signout">Logout</a>
+<a href="/ideas">Ideas Dashboard</a>
+<p><%= @user.alias %> says:</p>
+<div class="ideas"><%= @idea.idea %></div>
+
+<h2>People who liked this post:</h2>
+<table>
+	<thead>
+		<th>Alias</th>
+		<th>Name</th>
+	</thead>
+	<tbody>
+		<% @likes.each do |like| if like.idea_id == @idea.id %>
+		<tr>
+			<td><a href="users/<%= like.user.id %>"><%= like.user.alias %></a></td>
+			<td><%= like.user.first_name %> <%= like.user.last_name %></td>
+		</tr>
+		<% end %>
+		<% end %>
+	</tbody>
+</table>
